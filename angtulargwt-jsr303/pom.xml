@@ -31,12 +31,13 @@
 			<groupId>com.github.h0ru5.gwt</groupId>
 			<artifactId>angulargwt</artifactId>
 			<version>${angulargwt.version}</version>
+<!-- 			<version>${angulargwt.version}</version> -->
 			<type>gwt-lib</type>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
-			<version>${gwtVersion}</version>
+			<version>2.6.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -84,6 +85,12 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt.gwtmockito</groupId>
+			<artifactId>gwtmockito</artifactId>
+			<version>1.1.2</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
