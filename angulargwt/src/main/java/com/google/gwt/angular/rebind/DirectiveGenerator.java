@@ -53,6 +53,11 @@ public class DirectiveGenerator {
 		sw.println("return { ");
 		sw.indent();
 		
+		//Should we cover two use case ?
+		if(!ngDirective.template().isEmpty()){
+			sw.println("template : '"+ ngDirective.template() +"',");
+		}
+		
 		if (!ngDirective.templateUrl().isEmpty()) {
 			
 			if(!ngDirective.inlineTemplate()){
@@ -60,6 +65,7 @@ public class DirectiveGenerator {
 			} else {
 				
 				try {
+					//TODO : check for linux 
 					String template = new Scanner(new File(ngDirective.templateUrl())).useDelimiter("\\Z").next();
 					template = template.replace("\n", "").replace("\r", "");
 					sw.println("template : '"+ template +"',");
@@ -71,10 +77,6 @@ public class DirectiveGenerator {
 			}
 
 		}
-		
-//		if (!ngDirective.template().isEmpty()){
-//			sw.println("template : \"" + ngDirective.template() +"\",");
-//		}
 		
 		if (!ngDirective.restrict().isEmpty()) {
 			sw.println("restrict : \""+ ngDirective.restrict() +"\",");
