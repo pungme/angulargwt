@@ -53,10 +53,13 @@ public class DirectiveGenerator {
 		sw.println("return { ");
 		sw.indent();
 		
-		//Should we cover two use case ?
 		if(!ngDirective.template().isEmpty()){
 			sw.println("template : '"+ ngDirective.template() +"',");
 		}
+		
+//		if(!ngDirective.scope().isEmpty()){
+//			
+//		}
 		
 		if (!ngDirective.templateUrl().isEmpty()) {
 			
@@ -65,7 +68,7 @@ public class DirectiveGenerator {
 			} else {
 				
 				try {
-					//TODO : check for linux 
+					//TODO : check for linux file system
 					String template = new Scanner(new File(ngDirective.templateUrl())).useDelimiter("\\Z").next();
 					template = template.replace("\n", "").replace("\r", "");
 					sw.println("template : '"+ template +"',");
@@ -82,9 +85,20 @@ public class DirectiveGenerator {
 			sw.println("restrict : \""+ ngDirective.restrict() +"\",");
 		}
 		
+//		if (!ngDirective.controller().isEmpty()){
+//			sw.println("controller : \""+ ngDirective.controller() +"\",");
+//		}
+		
 		if (ngDirective.transclude()) {
 			sw.println("transclude : true,");
 		}
+		
+		if(ngDirective.scope()){
+			sw.println("scope : true,");
+//			sw.println(ngDirective.scope());
+//			sw.println("},");
+		}
+		//TODO: scope ? 
 		
 		ArrayList<String> linkPassedParams = new ArrayList<String>();
 		linkPassedParams.add("scope");
